@@ -9,33 +9,42 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollProgress from "./components/ScrollProgress";
+import Loading from "./components/Loading";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+    // Small delay before showing main content
+    setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+  };
 
   return (
-    <div
-      className={`min-h-screen transition-opacity duration-1000 ${
-        isLoaded ? "opacity-100" : "opacity-0"
-      }`}
-    >
-      <ScrollProgress />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Education />
-        <Experience />
-        <Awards />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <>
+      {isLoading && <Loading onComplete={handleLoadingComplete} />}
+      <div
+        className={`min-h-screen transition-opacity duration-1000 ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <ScrollProgress />
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Education />
+          <Experience />
+          <Awards />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 }
 

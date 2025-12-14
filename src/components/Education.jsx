@@ -9,6 +9,7 @@ const languages = [
 
 export default function Education() {
   const [isVisible, setIsVisible] = useState(false);
+  const [usydLogoError, setUsydLogoError] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -88,12 +89,21 @@ export default function Education() {
 
             <div className="flex items-start gap-4">
               <div
-                className={`text-4xl transition-all duration-700 ${
+                className={`transition-all duration-700 flex items-center ${
                   isVisible ? "opacity-100 rotate-0" : "opacity-90 -rotate-12"
                 }`}
                 style={{ transitionDelay: "400ms" }}
               >
-                🎓
+                {usydLogoError ? (
+                  <span className="text-4xl">🎓</span>
+                ) : (
+                  <img
+                    src="/usyd-logo.jpg"
+                    alt="University of Sydney"
+                    className="w-12 h-12 object-contain"
+                    onError={() => setUsydLogoError(true)}
+                  />
+                )}
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-[#fafafa] group-hover:text-[#6EE7A0] transition-colors">

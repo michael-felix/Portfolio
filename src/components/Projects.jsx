@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { Globe, Database, Cloud, ListTodo } from "lucide-react";
+import { SiReact, SiTailwindcss, SiSass } from "react-icons/si";
 
 const projects = [
   {
@@ -6,14 +8,16 @@ const projects = [
     description:
       "Personal portfolio built with React and Tailwind CSS featuring smooth animations and dark mode.",
     tech: ["React", "Tailwind"],
-    github: "https://github.com/michael-felix",
+    github: "https://github.com/michael-felix/Portfolio",
+    icon: Globe,
   },
   {
     title: "Clothing Database",
     description:
       "A simple clothing database styled with CSS, exploring layout, styling, and visual organisation.",
-    tech: ["React, SCSS"],
+    tech: ["React", "SCSS"],
     github: "https://github.com/michael-felix/clothing-database",
+    icon: Database,
   },
   {
     title: "Weather Website",
@@ -21,6 +25,7 @@ const projects = [
       "A weather application built with JavaScript that fetches and displays real-time weather data.",
     tech: ["React"],
     github: "https://github.com/michael-felix/weather-website",
+    icon: Cloud,
   },
   {
     title: "To-Do List",
@@ -28,8 +33,17 @@ const projects = [
       "A JavaScript-based to-do list app for managing tasks with basic CRUD functionality.",
     tech: ["React"],
     github: "https://github.com/michael-felix/to-do-list",
+    icon: ListTodo,
   },
 ];
+
+// Tech stack icon mapping
+const techIcons = {
+  React: SiReact,
+  Tailwind: SiTailwindcss,
+  SCSS: SiSass,
+  JavaScript: SiReact, // Using React icon as fallback, but JavaScript projects might not show this
+};
 
 export default function Projects() {
   const [isVisible, setIsVisible] = useState(false);
@@ -102,13 +116,16 @@ export default function Projects() {
             >
               <div className="flex items-start justify-between mb-4">
                 <div
-                  className={`text-3xl transition-all duration-500 ${
+                  className={`transition-all duration-500 text-[#6EE7A0] ${
                     hoveredIndex === i
                       ? "scale-110 rotate-6"
                       : "scale-100 rotate-0"
                   }`}
                 >
-                  📁
+                  {(() => {
+                    const IconComponent = project.icon;
+                    return <IconComponent className="w-8 h-8" />;
+                  })()}
                 </div>
                 <a
                   href={project.github}
@@ -134,19 +151,24 @@ export default function Projects() {
               </p>
 
               <div className="flex flex-wrap gap-2">
-                {project.tech.map((t, j) => (
-                  <span
-                    key={t}
-                    className={`px-3 py-1 bg-[#111111] text-[#6EE7A0] text-xs rounded-full transition-all duration-500 ${
-                      isVisible
-                        ? "opacity-100 scale-100"
-                        : "opacity-90 scale-90"
-                    }`}
-                    style={{ transitionDelay: `${i * 150 + j * 75 + 400}ms` }}
-                  >
-                    {t}
-                  </span>
-                ))}
+                {project.tech.map((t, j) => {
+                  const TechIcon = techIcons[t];
+                  if (!TechIcon) return null;
+                  return (
+                    <span
+                      key={t}
+                      className={`px-3 py-1.5 bg-[#111111] text-[#6EE7A0] text-xs rounded-full transition-all duration-500 flex items-center gap-1.5 ${
+                        isVisible
+                          ? "opacity-100 scale-100"
+                          : "opacity-90 scale-90"
+                      }`}
+                      style={{ transitionDelay: `${i * 150 + j * 75 + 400}ms` }}
+                    >
+                      <TechIcon className="w-3.5 h-3.5 flex-shrink-0" />
+                      {t}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           ))}

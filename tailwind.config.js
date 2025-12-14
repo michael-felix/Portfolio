@@ -48,6 +48,7 @@ export default {
         scaleIn: "scaleIn 0.8s ease forwards",
         slideDown: "slideDown 0.8s ease forwards",
         float: "float 6s ease-in-out infinite",
+        "spin-slow": "spin 4s linear infinite",
       },
     },
   },

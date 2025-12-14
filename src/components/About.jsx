@@ -1,4 +1,20 @@
 import { useEffect, useRef, useState } from "react";
+import {
+  SiPython,
+  SiJavascript,
+  SiCplusplus,
+  SiC,
+  SiR,
+  SiPostgresql,
+  SiReact,
+  SiHtml5,
+  SiCss3,
+  SiSass,
+  SiNodedotjs,
+  SiGit,
+  SiGnubash,
+} from "react-icons/si";
+import { Code } from "lucide-react";
 
 const techCategories = [
   {
@@ -18,6 +34,26 @@ const techCategories = [
     techs: ["Git", "Bash", "VS Code"],
   },
 ];
+
+// Tech stack icon mapping
+const techIcons = {
+  Python: SiPython,
+  JavaScript: SiJavascript,
+  "C++": SiCplusplus,
+  C: SiC,
+  R: SiR,
+  SQL: SiPostgresql,
+  React: SiReact,
+  "React Native": SiReact,
+  HTML: SiHtml5,
+  CSS: SiCss3,
+  SCSS: SiSass,
+  "Node.js": SiNodedotjs,
+  PostgreSQL: SiPostgresql,
+  Git: SiGit,
+  Bash: SiGnubash,
+  "VS Code": Code,
+};
 
 export default function About() {
   const [isVisible, setIsVisible] = useState(false);
@@ -116,23 +152,28 @@ export default function About() {
                 {category.name.toUpperCase()}
               </p>
               <div className="flex flex-wrap gap-3">
-                {category.techs.map((tech, i) => (
-                  <div
-                    key={tech}
-                    className={`group px-4 py-3 bg-[#161616] rounded-xl border border-[#222222] hover:border-[#6EE7A0]/50 hover:bg-[#161616]/80 transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:shadow-[#6EE7A0]/10 cursor-default ${
-                      isVisible
-                        ? "opacity-100 translate-y-0 scale-100"
-                        : "opacity-90 translate-y-4 scale-98"
-                    }`}
-                    style={{
-                      transitionDelay: `${catIndex * 150 + i * 75 + 600}ms`,
-                    }}
-                  >
-                    <span className="text-[#fafafa] font-medium text-sm group-hover:text-[#6EE7A0] transition-colors">
-                      {tech}
-                    </span>
-                  </div>
-                ))}
+                {category.techs.map((tech, i) => {
+                  const TechIcon = techIcons[tech];
+                  if (!TechIcon) return null;
+                  return (
+                    <div
+                      key={tech}
+                      className={`group px-4 py-3 bg-[#161616] rounded-xl border border-[#222222] hover:border-[#6EE7A0]/50 hover:bg-[#161616]/80 transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:shadow-[#6EE7A0]/10 cursor-default flex items-center gap-2 ${
+                        isVisible
+                          ? "opacity-100 translate-y-0 scale-100"
+                          : "opacity-90 translate-y-4 scale-98"
+                      }`}
+                      style={{
+                        transitionDelay: `${catIndex * 150 + i * 75 + 600}ms`,
+                      }}
+                      >
+                      <TechIcon className="w-4 h-4 text-[#6EE7A0] group-hover:scale-110 transition-transform flex-shrink-0" />
+                      <span className="text-[#fafafa] font-medium text-sm group-hover:text-[#6EE7A0] transition-colors">
+                        {tech}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           ))}

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { SiInstagram, SiLinkedin } from "react-icons/si";
 
 const socials = [
   {
@@ -29,17 +30,20 @@ const socials = [
     ),
     url: "mailto:michaelfl2006@gmail.com",
   },
+  {
+    name: "Instagram",
+    icon: <SiInstagram className="w-6 h-6" />,
+    url: "https://www.instagram.com/michael__f.l",
+  },
+  {
+    name: "LinkedIn",
+    icon: <SiLinkedin className="w-6 h-6" />,
+    url: "https://www.linkedin.com/in/michael-lim-73673b2b4",
+  },
 ];
 
 export default function Contact() {
   const [isVisible, setIsVisible] = useState(false);
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -58,16 +62,6 @@ export default function Contact() {
 
     return () => observer.disconnect();
   }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setFormState({ name: "", email: "", message: "" });
-    setTimeout(() => setSubmitted(false), 3000);
-  };
 
   return (
     <section
@@ -129,95 +123,15 @@ export default function Contact() {
           Looking for opportunities to learn and grow. Feel free to reach out!
         </p>
 
-        {/* Form with staggered inputs */}
-        <form
-          onSubmit={handleSubmit}
-          className={`max-w-lg mx-auto space-y-4 transition-all duration-700 delay-400 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-90 translate-y-6"
-          }`}
-        >
-          <div className="grid grid-cols-2 gap-4">
-            <input
-              type="text"
-              placeholder="Name"
-              value={formState.name}
-              onChange={(e) =>
-                setFormState((s) => ({ ...s, name: e.target.value }))
-              }
-              required
-              className={`px-4 py-4 bg-[#161616] border border-[#222222] rounded-xl text-[#fafafa] placeholder-[#666666] focus:outline-none focus:border-[#6EE7A0] focus:shadow-lg focus:shadow-[#6EE7A0]/10 transition-all duration-500 ${
-                isVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-90 -translate-x-4"
-              }`}
-              style={{ transitionDelay: "500ms" }}
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              value={formState.email}
-              onChange={(e) =>
-                setFormState((s) => ({ ...s, email: e.target.value }))
-              }
-              required
-              className={`px-4 py-4 bg-[#161616] border border-[#222222] rounded-xl text-[#fafafa] placeholder-[#666666] focus:outline-none focus:border-[#6EE7A0] focus:shadow-lg focus:shadow-[#6EE7A0]/10 transition-all duration-500 ${
-                isVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-90 translate-x-4"
-              }`}
-              style={{ transitionDelay: "550ms" }}
-            />
-          </div>
-          <textarea
-            placeholder="Your message..."
-            value={formState.message}
-            onChange={(e) =>
-              setFormState((s) => ({ ...s, message: e.target.value }))
-            }
-            required
-            rows={4}
-            className={`w-full px-4 py-4 bg-[#161616] border border-[#222222] rounded-xl text-[#fafafa] placeholder-[#666666] focus:outline-none focus:border-[#6EE7A0] focus:shadow-lg focus:shadow-[#6EE7A0]/10 transition-all duration-500 resize-none ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-90 translate-y-4"
-            }`}
-            style={{ transitionDelay: "600ms" }}
-          />
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className={`w-full px-8 py-4 bg-[#6EE7A0] text-[#0a0a0a] font-semibold rounded-xl hover:shadow-lg hover:shadow-[#6EE7A0]/25 transition-all duration-500 hover:-translate-y-1 disabled:opacity-50 flex items-center justify-center gap-2 ${
-              isVisible
-                ? "opacity-100 translate-y-0 scale-100"
-                : "opacity-90 translate-y-4 scale-98"
-            }`}
-            style={{ transitionDelay: "700ms" }}
-          >
-            {isSubmitting ? (
-              <span className="animate-pulse">Sending...</span>
-            ) : submitted ? (
-              <>
-                <span>Sent!</span>
-                <span className="text-xl">✓</span>
-              </>
-            ) : (
-              <>
-                <span>Send Message</span>
-                <span>→</span>
-              </>
-            )}
-          </button>
-        </form>
-
         {/* Socials with bounce animation */}
         <div
-          className={`mt-12 transition-all duration-700 ${
+          className={`transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-90 translate-y-6"
           }`}
-          style={{ transitionDelay: "800ms" }}
+          style={{ transitionDelay: "400ms" }}
         >
           <p className="text-xs text-[#666666] tracking-widest mb-6">
-            OR REACH OUT DIRECTLY
+            REACH OUT DIRECTLY
           </p>
           <div className="flex justify-center gap-4">
             {socials.map((social, i) => (
@@ -229,7 +143,7 @@ export default function Contact() {
                 className={`group p-4 bg-[#161616] rounded-2xl border border-[#222222] hover:border-[#6EE7A0]/30 text-[#a3a3a3] hover:text-[#6EE7A0] transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:shadow-[#6EE7A0]/10 ${
                   isVisible ? "opacity-100 scale-100" : "opacity-90 scale-90"
                 }`}
-                style={{ transitionDelay: `${i * 100 + 900}ms` }}
+                style={{ transitionDelay: `${i * 100 + 500}ms` }}
               >
                 <span className="block transition-transform duration-300 group-hover:scale-110">
                   {social.icon}
@@ -241,7 +155,7 @@ export default function Contact() {
             className={`text-[#a3a3a3] text-sm mt-6 transition-all duration-500 ${
               isVisible ? "opacity-100" : "opacity-90"
             }`}
-            style={{ transitionDelay: "1100ms" }}
+            style={{ transitionDelay: "700ms" }}
           >
             michaelfl2006@gmail.com
           </p>

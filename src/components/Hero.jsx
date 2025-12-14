@@ -135,10 +135,7 @@ export default function Hero() {
               href="#contact"
               className="group px-8 py-4 border border-dark-border text-cream font-semibold rounded-full hover:border-accent hover:text-accent transition-all duration-300 hover:-translate-y-1"
             >
-              <span className="flex items-center gap-2">
-                Say Hello
-                <span className="group-hover:animate-bounce">👋</span>
-              </span>
+              <span className="flex items-center gap-2">Say Hello 👋🏻</span>
             </a>
           </div>
 

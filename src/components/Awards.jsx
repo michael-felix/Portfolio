@@ -27,6 +27,7 @@ const awards = [
 
 export default function Awards() {
   const [isVisible, setIsVisible] = useState(false);
+  const [unihackLogoErrors, setUnihackLogoErrors] = useState({});
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -107,24 +108,53 @@ export default function Awards() {
               </div>
 
               <div className="flex flex-col lg:flex-row lg:items-start gap-6">
-                {/* Trophy icon with rotation */}
+                {/* UNIHACK logo with rotation */}
                 <div
-                  className={`text-4xl transition-all duration-700 ${
+                  className={`transition-all duration-700 flex items-center ${
                     isVisible
                       ? "opacity-100 rotate-0 scale-100"
                       : "opacity-90 -rotate-45 scale-50"
                   }`}
                   style={{ transitionDelay: `${i * 200 + 300}ms` }}
                 >
-                  🏆
+                  {unihackLogoErrors[`trophy-${i}`] ? (
+                    <span className="text-4xl">🏆</span>
+                  ) : (
+                    <img
+                      src="/unihack-logo.png"
+                      alt="UNIHACK"
+                      className="w-12 h-12 object-contain"
+                      onError={() =>
+                        setUnihackLogoErrors((prev) => ({
+                          ...prev,
+                          [`trophy-${i}`]: true,
+                        }))
+                      }
+                    />
+                  )}
                 </div>
 
                 {/* Content */}
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-3 mb-2">
-                    <h3 className="text-xl font-bold text-[#fafafa] group-hover:text-[#6EE7A0] transition-colors">
-                      {award.event}
-                    </h3>
+                    <div className="flex items-center gap-2">
+                      {!unihackLogoErrors[`text-${i}`] && (
+                        <img
+                          src="/unihack-logo.svg"
+                          alt="UNIHACK"
+                          className="h-5 w-auto object-contain"
+                          onError={() =>
+                            setUnihackLogoErrors((prev) => ({
+                              ...prev,
+                              [`text-${i}`]: true,
+                            }))
+                          }
+                        />
+                      )}
+                      <h3 className="text-xl font-bold text-[#fafafa] group-hover:text-[#6EE7A0] transition-colors">
+                        {award.event}
+                      </h3>
+                    </div>
                     {award.highlight && (
                       <span
                         className={`px-2 py-0.5 text-xs bg-[#6EE7A0]/10 text-[#6EE7A0] rounded-full border border-[#6EE7A0]/20 transition-all duration-500 ${

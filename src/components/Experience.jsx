@@ -5,7 +5,7 @@ const experiences = [
     id: "starbucks",
     company: "Starbucks Bondi Junction",
     role: "Shift Supervisor",
-    duration: "03/2024 - Present",
+    duration: "03/2024 - 12/2025",
     description: [
       "Led shifts, managed team performance, and ensured smooth store operations.",
       "Trained new baristas and maintained high standards of customer service and product quality.",
