@@ -13,25 +13,77 @@ import {
   SiNodedotjs,
   SiGit,
   SiGnubash,
+  SiTypescript,
+  SiAndroidstudio,
+  SiGradle,
+  SiExpress,
+  SiSupabase,
+  SiFirebase,
+  SiPandas,
+  SiNumpy,
+  SiScikitlearn,
+  SiAmazonaws,
+  SiDocker,
+  SiGithubactions,
 } from "react-icons/si";
 import { Code } from "lucide-react";
+
+function TextIcon({ label }) {
+  const initials = label
+    .split(/[\s/]+/)
+    .map((w) => w[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+  return (
+    <span className="w-4 h-4 flex items-center justify-center text-[9px] font-bold text-[#6EE7A0] border border-[#6EE7A0]/40 rounded leading-none flex-shrink-0">
+      {initials}
+    </span>
+  );
+}
 
 const techCategories = [
   {
     name: "Languages",
-    techs: ["Python", "JavaScript", "C++", "C", "R", "SQL"],
+    techs: ["Python", "JavaScript", "C++", "C", "R", "SQL", "TypeScript"],
+  },
+  {
+    name: "Mobile Development",
+    techs: ["Android Studio", "React Native", "Gradle"],
   },
   {
     name: "Frontend",
-    techs: ["React", "React Native", "HTML", "CSS", "SCSS"],
+    techs: ["React", "HTML", "CSS", "SCSS"],
   },
   {
-    name: "Backend & Database",
-    techs: ["Node.js", "PostgreSQL"],
+    name: "Backend & APIs",
+    techs: [
+      "Node.js",
+      "PostgreSQL",
+      "REST APIs",
+      "Express.js",
+      "Supabase",
+      "Firebase",
+    ],
   },
   {
-    name: "Tools",
-    techs: ["Git", "Bash", "VS Code"],
+    name: "Data & Scripting",
+    techs: ["pandas", "R", "Quarto", "NumPy", "scikit-learn"],
+  },
+  {
+    name: "Automation DevOps",
+    techs: ["AWS", "CI/CD", "Docker", "Github Actions"],
+  },
+  {
+    name: "Software Engineering",
+    techs: [
+      "Git",
+      "Cursor",
+      "Claude",
+      "Agile/Scrum",
+      "Unit Testing",
+      "Performance Optimisation",
+    ],
   },
 ];
 
@@ -39,6 +91,7 @@ const techCategories = [
 const techIcons = {
   Python: SiPython,
   JavaScript: SiJavascript,
+  TypeScript: SiTypescript,
   "C++": SiCplusplus,
   C: SiC,
   R: SiR,
@@ -49,7 +102,18 @@ const techIcons = {
   CSS: SiCss3,
   SCSS: SiSass,
   "Node.js": SiNodedotjs,
+  "Express.js": SiExpress,
   PostgreSQL: SiPostgresql,
+  Supabase: SiSupabase,
+  Firebase: SiFirebase,
+  "Android Studio": SiAndroidstudio,
+  Gradle: SiGradle,
+  pandas: SiPandas,
+  NumPy: SiNumpy,
+  "scikit-learn": SiScikitlearn,
+  AWS: SiAmazonaws,
+  Docker: SiDocker,
+  "Github Actions": SiGithubactions,
   Git: SiGit,
   Bash: SiGnubash,
   "VS Code": Code,
@@ -66,7 +130,7 @@ export default function About() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {
@@ -154,7 +218,6 @@ export default function About() {
               <div className="flex flex-wrap gap-3">
                 {category.techs.map((tech, i) => {
                   const TechIcon = techIcons[tech];
-                  if (!TechIcon) return null;
                   return (
                     <div
                       key={tech}
@@ -166,8 +229,12 @@ export default function About() {
                       style={{
                         transitionDelay: `${catIndex * 150 + i * 75 + 600}ms`,
                       }}
-                      >
-                      <TechIcon className="w-4 h-4 text-[#6EE7A0] group-hover:scale-110 transition-transform flex-shrink-0" />
+                    >
+                      {TechIcon ? (
+                        <TechIcon className="w-4 h-4 text-[#6EE7A0] group-hover:scale-110 transition-transform flex-shrink-0" />
+                      ) : (
+                        <TextIcon label={tech} />
+                      )}
                       <span className="text-[#fafafa] font-medium text-sm group-hover:text-[#6EE7A0] transition-colors">
                         {tech}
                       </span>

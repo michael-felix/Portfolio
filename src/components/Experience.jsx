@@ -2,10 +2,21 @@ import { useState, useEffect, useRef } from "react";
 
 const experiences = [
   {
+    id: "usyd",
+    company: "University of Sydney",
+    role: "Research Assistant",
+    duration: "02/2026 - Present",
+    description: [
+      "Conducted Analysis of realised volatility using the Optiver Dataset, applying statistical modelling and machine learning techniques to understand volatility dynamics and improve predictive performance.",
+      "Developed and evaluated predictive models (e.g., linear regression, HAR-RV, and ensemble models) using time-series cross-validation, optimising performance with metrics such as RMSPE and QLIKE.",
+    ],
+    tech: ["Python", "Pandas", "NumPy", "scikit-learn", "Jupyter Notebook"],
+  },
+  {
     id: "starbucks",
     company: "Starbucks Bondi Junction",
     role: "Shift Supervisor",
-    duration: "03/2024 - 12/2025",
+    duration: "03/2024 - 02/2026",
     description: [
       "Led shifts, managed team performance, and ensured smooth store operations.",
       "Trained new baristas and maintained high standards of customer service and product quality.",
@@ -39,7 +50,7 @@ export default function Experience() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.15 },
     );
 
     if (sectionRef.current) {
