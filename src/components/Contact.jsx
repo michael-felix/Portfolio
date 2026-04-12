@@ -38,7 +38,7 @@ const socials = [
   {
     name: "LinkedIn",
     icon: <SiLinkedin className="w-6 h-6" />,
-    url: "https://www.linkedin.com/in/michael-lim-73673b2b4",
+    url: "https://www.linkedin.com/in/michael-felix-lim",
   },
 ];
 
@@ -53,7 +53,7 @@ export default function Contact() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.15 },
     );
 
     if (sectionRef.current) {
