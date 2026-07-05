@@ -25,6 +25,7 @@ import {
   SiAmazonaws,
   SiDocker,
   SiGithubactions,
+  SiMongodb,
 } from "react-icons/si";
 import { Code } from "lucide-react";
 
@@ -60,6 +61,7 @@ const techCategories = [
     techs: [
       "Node.js",
       "PostgreSQL",
+      "MongoDB",
       "REST APIs",
       "Express.js",
       "Supabase",
@@ -106,6 +108,7 @@ const techIcons = {
   PostgreSQL: SiPostgresql,
   Supabase: SiSupabase,
   Firebase: SiFirebase,
+  MongoDB: SiMongodb,
   "Android Studio": SiAndroidstudio,
   Gradle: SiGradle,
   pandas: SiPandas,
