@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Globe, Database, Cloud, ListTodo, TrendingUp, BookOpen } from "lucide-react";
+import { Globe, Database, TrendingUp, BookOpen } from "lucide-react";
 import { SiReact, SiTailwindcss, SiSass, SiNextdotjs, SiPython, SiFastapi, SiMongodb, SiSupabase } from "react-icons/si";
 
 const projects = [
@@ -12,35 +12,12 @@ const projects = [
     icon: Globe,
   },
   {
-    title: "Clothing Database",
-    description:
-      "A simple clothing database styled with CSS, exploring layout, styling, and visual organisation.",
-    tech: ["React", "SCSS"],
-    github: "https://github.com/michael-felix/clothing-database",
-    icon: Database,
-  },
-  {
-    title: "Weather Website",
-    description:
-      "A weather application built with JavaScript that fetches and displays real-time weather data.",
-    tech: ["React"],
-    github: "https://github.com/michael-felix/weather-website",
-    icon: Cloud,
-  },
-  {
-    title: "To-Do List",
-    description:
-      "A JavaScript-based to-do list app for managing tasks with basic CRUD functionality.",
-    tech: ["React"],
-    github: "https://github.com/michael-felix/to-do-list",
-    icon: ListTodo,
-  },
-  {
     title: "ScholarRAG",
     description:
       "A retrieval-augmented generation app for research papers. Upload a PDF, ask natural language questions, and get cited answers grounded in the source material — refusing to fabricate when the paper lacks sufficient context.",
     tech: ["Next.js", "FastAPI", "Python", "Supabase"],
     github: "https://github.com/michael-felix/ScholarRAG",
+    demo: "https://scholar-rag-flax.vercel.app",
     icon: BookOpen,
   },
   {
@@ -51,6 +28,14 @@ const projects = [
     github: "https://github.com/michael-felix/Volatility-Predictor",
     demo: "https://volatility-predictor.vercel.app",
     icon: TrendingUp,
+  },
+  {
+    title: "Clothing Database",
+    description:
+      "A simple clothing database styled with CSS, exploring layout, styling, and visual organisation.",
+    tech: ["React", "SCSS"],
+    github: "https://github.com/michael-felix/clothing-database",
+    icon: Database,
   },
 ];
 
