@@ -26,6 +26,9 @@ import {
   SiDocker,
   SiGithubactions,
   SiMongodb,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiFastapi,
 } from "react-icons/si";
 import { Code } from "lucide-react";
 
@@ -54,7 +57,7 @@ const techCategories = [
   },
   {
     name: "Frontend",
-    techs: ["React", "HTML", "CSS", "SCSS"],
+    techs: ["React", "Next.js", "Tailwind", "HTML", "CSS", "SCSS"],
   },
   {
     name: "Backend & APIs",
@@ -62,6 +65,8 @@ const techCategories = [
       "Node.js",
       "PostgreSQL",
       "MongoDB",
+      "FastAPI",
+      "Pinecone",
       "REST APIs",
       "Express.js",
       "Supabase",
@@ -109,6 +114,9 @@ const techIcons = {
   Supabase: SiSupabase,
   Firebase: SiFirebase,
   MongoDB: SiMongodb,
+  "Next.js": SiNextdotjs,
+  Tailwind: SiTailwindcss,
+  FastAPI: SiFastapi,
   "Android Studio": SiAndroidstudio,
   Gradle: SiGradle,
   pandas: SiPandas,

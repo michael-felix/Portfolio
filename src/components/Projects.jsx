@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Globe, Database, Cloud, ListTodo, TrendingUp } from "lucide-react";
-import { SiReact, SiTailwindcss, SiSass, SiNextdotjs, SiPython, SiFastapi, SiMongodb } from "react-icons/si";
+import { Globe, Database, Cloud, ListTodo, TrendingUp, BookOpen } from "lucide-react";
+import { SiReact, SiTailwindcss, SiSass, SiNextdotjs, SiPython, SiFastapi, SiMongodb, SiSupabase } from "react-icons/si";
 
 const projects = [
   {
@@ -36,6 +36,14 @@ const projects = [
     icon: ListTodo,
   },
   {
+    title: "ScholarRAG",
+    description:
+      "A retrieval-augmented generation app for research papers. Upload a PDF, ask natural language questions, and get cited answers grounded in the source material — refusing to fabricate when the paper lacks sufficient context.",
+    tech: ["Next.js", "FastAPI", "Python", "Supabase"],
+    github: "https://github.com/michael-felix/ScholarRAG",
+    icon: BookOpen,
+  },
+  {
     title: "Volatility Predictor",
     description:
       "Real-time stock volatility prediction platform that ingests OHLCV market data, engineers volatility features, and cross-validates multiple forecasting models (HAR-RV, Ridge, Random Forest, XGBoost) served via a FastAPI backend and Next.js dashboard.",
@@ -54,6 +62,7 @@ const techIcons = {
   Python: SiPython,
   FastAPI: SiFastapi,
   MongoDB: SiMongodb,
+  Supabase: SiSupabase,
 };
 
 export default function Projects() {
