@@ -29,7 +29,6 @@ import {
   SiNextdotjs,
   SiTailwindcss,
   SiFastapi,
-  SiJava,
   SiOpenai,
   SiTableau,
   SiVercel,
@@ -62,7 +61,7 @@ const techCategories = [
   },
   {
     name: "AI & LLMs",
-    techs: ["Claude", "OpenAI API"],
+    techs: ["Claude", "OpenAI API", "Groq"],
   },
   {
     name: "Frontend & Web",
@@ -111,7 +110,6 @@ const techIcons = {
   TypeScript: SiTypescript,
   "C++": SiCplusplus,
   C: SiC,
-  Java: SiJava,
   R: SiR,
   SQL: SiPostgresql,
   Bash: SiGnubash,
