@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Globe, Database, TrendingUp, BookOpen } from "lucide-react";
-import { SiReact, SiTailwindcss, SiSass, SiNextdotjs, SiPython, SiFastapi, SiMongodb, SiSupabase } from "react-icons/si";
+import { Globe, TrendingUp, BookOpen, LayoutDashboard } from "lucide-react";
+import { SiReact, SiTailwindcss, SiSass, SiNextdotjs, SiPython, SiFastapi, SiMongodb, SiSupabase, SiTypescript } from "react-icons/si";
 
 const projects = [
   {
@@ -10,6 +10,15 @@ const projects = [
     tech: ["React", "Tailwind"],
     github: "https://github.com/michael-felix/Portfolio",
     icon: Globe,
+  },
+  {
+    title: "Finance Dashboard",
+    description:
+      "Full-stack financial dashboard tracking ASX stocks, cryptocurrency, and AUD forex rates in real time. Features watchlists, historical charts, live market data refreshed every 60 seconds, and an admin panel for managing assets and user roles.",
+    tech: ["Next.js", "FastAPI", "TypeScript", "Supabase"],
+    github: "https://github.com/michael-felix/Finance-Dashboard",
+    demo: "https://finance-dashboard-snowy.vercel.app",
+    icon: LayoutDashboard,
   },
   {
     title: "ScholarRAG",
@@ -29,14 +38,6 @@ const projects = [
     demo: "https://volatility-predictor.vercel.app",
     icon: TrendingUp,
   },
-  {
-    title: "Clothing Database",
-    description:
-      "A simple clothing database styled with CSS, exploring layout, styling, and visual organisation.",
-    tech: ["React", "SCSS"],
-    github: "https://github.com/michael-felix/clothing-database",
-    icon: Database,
-  },
 ];
 
 const techIcons = {
@@ -48,6 +49,7 @@ const techIcons = {
   FastAPI: SiFastapi,
   MongoDB: SiMongodb,
   Supabase: SiSupabase,
+  TypeScript: SiTypescript,
 };
 
 export default function Projects() {
